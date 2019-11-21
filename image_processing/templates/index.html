@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Video</title>
+    <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript">
+        var data = "stop";
+        $('#start_ajax').click(function(){
+            if(data == "stop")
+                data = "start";
+            else
+                data == "stop";
+            $.ajax({
+                type:"GET",
+                url:"http://192.168.50.1:8000/camera",
+                dataType:'text',
+                data: data,
+                success:function(data){
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Video</h1>
+    <a href="/camera/activate" class="button">카메라 작동</a>
+    <a href="/camera/stop" class="button">카메라 멈춤</a>
+    <img src="{{url_for('video_feed')}}">
+</body>
+</html>
